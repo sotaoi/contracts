@@ -17,7 +17,7 @@ declare class Artifact {
   public static deserialize(value: string | object | Artifact): Artifact;
 }
 
-class AuthRecord extends Artifact {
+declare class AuthRecord extends Artifact {
   public createdAt: Date;
   public active: boolean;
   public pocket: { [key: string]: any };
@@ -39,7 +39,7 @@ class AuthRecord extends Artifact {
   public static deserialize(value: string | object | AuthRecord): AuthRecord;
 }
 
-class RecordRef {
+declare class RecordRef {
   public repository: string;
   public uuid: string;
 
@@ -56,7 +56,7 @@ class RecordRef {
   public static fromRecordEntry(recordEntry: RecordEntry): RecordRef;
 }
 
-class Record {
+declare class Record {
   [key: string]: any;
   public uuid: string;
 
@@ -65,13 +65,13 @@ class Record {
   public static make(data: any): Record;
 }
 
-class RecordEntry extends Record {
+declare class RecordEntry extends Record {
   public __repository__: string;
 
   constructor(repository: string, uuid: string, data: { [key: string]: any });
 }
 
-class Artifacts {
+declare class Artifacts {
   public child: null | Artifact;
   public parent: null | Artifact;
   public subject: null | Artifact;
@@ -88,24 +88,22 @@ class Artifacts {
   public targets: null | Artifact[];
   // list A, B, C, D
 
-  constructor(
-    artifacts: {
-      child?: null | Artifact;
-      parent?: null | Artifact;
-      subject?: null | Artifact;
-      inviter?: null | Artifact;
-      invitee?: null | Artifact;
-      agent?: null | Artifact;
-      target?: null | Artifact;
-      children?: Artifact[];
-      parents?: Artifact[];
-      subjects?: Artifact[];
-      inviters?: Artifact[];
-      invitees?: Artifact[];
-      agents?: Artifact[];
-      targets?: Artifact[];
-    } = {}
-  );
+  constructor(artifacts?: {
+    child?: null | Artifact;
+    parent?: null | Artifact;
+    subject?: null | Artifact;
+    inviter?: null | Artifact;
+    invitee?: null | Artifact;
+    agent?: null | Artifact;
+    target?: null | Artifact;
+    children?: Artifact[];
+    parents?: Artifact[];
+    subjects?: Artifact[];
+    inviters?: Artifact[];
+    invitees?: Artifact[];
+    agents?: Artifact[];
+    targets?: Artifact[];
+  });
 }
 
 export { Artifact, AuthRecord, Record, RecordRef, RecordEntry, Artifacts };
