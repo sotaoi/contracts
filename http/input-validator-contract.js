@@ -1,4 +1,4 @@
-class InputValidator {
+class InputValidatorContract {
   getResult(getInput) {
     throw new Error('InputValidator has missing "getResult" implementation');
   }
@@ -65,6 +65,6 @@ class InputValidator {
   }
 }
 
-InputValidator.DEFALUT_ERROR_MSG = 'Field validation failed for method "%s"';
+InputValidatorContract.DEFALUT_ERROR_MSG = 'Field validation failed for method "%s"';
 
-module.exports = { InputValidator };
+module.exports = { InputValidatorContract };

@@ -1,4 +1,4 @@
-class ControlPanel {
+class ControlPanelContract {
   getRoutesConfigGate(prefix) {
     throw new Error('ControlPanel has no "getRoutesConfigGate" implementation');
   }
@@ -7,4 +7,4 @@ class ControlPanel {
   }
 }
 
-module.exports = { ControlPanel };
+module.exports = { ControlPanelContract };

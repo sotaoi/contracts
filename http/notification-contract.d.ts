@@ -9,7 +9,7 @@ import { CommandResult, QueryResult, ActionConclusion, AuthResult, TaskResult } 
 
 type PushRoute = (to: string, goTop?: boolean) => void;
 
-declare abstract class Notification {
+declare abstract class NotificationContract {
   abstract swal: SweetAlert2 & ReactSweetAlert;
   abstract fire<T = any>(options: SweetAlertOptions<T>): Promise<SweetAlertResult<Awaited<T>>>;
   abstract process<T = any>(
@@ -22,5 +22,5 @@ declare abstract class Notification {
   constructor(pushRoute: PushRoute);
 }
 
-export { Notification };
+export { NotificationContract };
 export type { PushRoute };

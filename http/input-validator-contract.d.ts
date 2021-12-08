@@ -21,7 +21,7 @@ interface InputValidationResult {
   validations: { [key: string]: string[] };
 }
 
-declare abstract class InputValidator<
+declare abstract class InputValidatorContract<
   FormValidation = null,
   FormValidations = any,
   FieldValidation = any,
@@ -45,7 +45,7 @@ declare abstract class InputValidator<
 
   abstract getFormValidation(
     getInput: (key: string) => void | null | BaseInput
-  ): InputValidator<(key: string) => void | null | BaseInput>;
+  ): InputValidatorContract<(key: string) => void | null | BaseInput>;
 
   public static DEFALUT_ERROR_MSG: string;
 
@@ -68,5 +68,5 @@ declare abstract class InputValidator<
   public isValid(): boolean;
 }
 
-export { InputValidator };
+export { InputValidatorContract };
 export type { RequesterFn, InputValidatorConfig, InputValidationResult };

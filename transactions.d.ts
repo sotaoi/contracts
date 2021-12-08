@@ -1,5 +1,5 @@
 import { Artifacts, AuthRecord, RecordEntry, Artifact, RecordRef } from './artifacts';
-import { Notification } from './http/notification-contract';
+import { NotificationContract } from './http/notification-contract';
 
 interface ScopedRequests {
   [key: string]: (data: { [key: string]: any }) => Promise<any>;
@@ -302,11 +302,11 @@ type QueryAction = (
 
 declare class ActionConclusion<T = any> {
   protected _result: CommandResult | AuthResult | TaskResult;
-  protected notification: Notification;
+  protected notification: NotificationContract;
   protected pushRoute: (to: string, goTop?: boolean) => void;
   constructor(
     result: CommandResult | AuthResult | TaskResult,
-    notification: Notification,
+    notification: NotificationContract,
     pushRoute: (to: string, goTop?: boolean) => void
   );
   public result(): CommandResult | AuthResult | TaskResult;

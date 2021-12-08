@@ -1,7 +1,7 @@
-class Notification {
+class NotificationContract {
   constructor(pushRoute) {
     this.pushRoute = pushRoute;
   }
 }
 
-module.exports = { Notification };
+module.exports = { NotificationContract };

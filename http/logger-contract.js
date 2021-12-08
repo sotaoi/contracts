@@ -1,4 +1,4 @@
-class Logger {
+class LoggerContract {
   notice(...textArr) {
     throw new Error('Logger has missing "notice" implementation');
   }
@@ -19,4 +19,4 @@ class Logger {
   }
 }
 
-module.exports = { Logger };
+module.exports = { LoggerContract };

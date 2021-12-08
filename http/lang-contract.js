@@ -1,4 +1,4 @@
-class Lang {
+class LangContract {
   async init(store) {
     throw new Error('InputValidator has missing "init" implementation');
   }
@@ -10,4 +10,4 @@ class Lang {
   }
 }
 
-module.exports = { Lang };
+module.exports = { LangContract };

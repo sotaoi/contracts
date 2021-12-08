@@ -1,8 +1,8 @@
 import { Lang, State, AppInfoInterface } from '../state';
 import { AuthRecord } from '../artifacts';
 import { StoreCreator, Store as ReduxStore } from '../definitions/redux';
-import { InputValidator } from './input-validator-contract';
-import { LocalMemory } from './local-memory-contract';
+import { InputValidatorContract } from './input-validator-contract';
+import { LocalMemoryContract } from './local-memory-contract';
 
 type StoreType = { getState: () => { [key: string]: any }; dispatch: any; subscribe: any } | ReduxStore;
 
@@ -10,8 +10,8 @@ declare abstract class StoreContract {
   protected appInfo: AppInfoInterface;
   protected apiUrl: string;
   protected createStore: StoreCreator;
-  protected inputValidator: InputValidator;
-  protected localMemory: LocalMemory;
+  protected inputValidator: InputValidatorContract;
+  protected localMemory: LocalMemoryContract;
 
   protected store: StoreType;
   protected initialState: State;
@@ -20,8 +20,8 @@ declare abstract class StoreContract {
     appInfo: AppInfoInterface,
     apiUrl: string,
     createStore: StoreCreator,
-    inputValidator: InputValidator,
-    localMemory: LocalMemory
+    inputValidator: InputValidatorContract,
+    localMemory: LocalMemoryContract
   );
 
   abstract init(): Promise<void>;

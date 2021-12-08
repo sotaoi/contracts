@@ -1,4 +1,4 @@
-class LocalMemory {
+class LocalMemoryContract {
   async set(key, value) {
     throw new Error('LocalMemory has missing "set" implementation');
   }
@@ -10,4 +10,4 @@ class LocalMemory {
   }
 }
 
-module.exports = { LocalMemory };
+module.exports = { LocalMemoryContract };

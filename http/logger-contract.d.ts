@@ -1,4 +1,4 @@
-declare abstract class Logger {
+declare abstract class LoggerContract {
   abstract notice(...textArr: any[]): void;
   abstract info(...textArr: any[]): void;
   abstract warn(...textArr: any[]): void;
@@ -7,4 +7,4 @@ declare abstract class Logger {
   abstract wstack(err: any): void;
 }
 
-export { Logger };
+export { LoggerContract };

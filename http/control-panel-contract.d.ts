@@ -1,8 +1,8 @@
 import { RoutesConfig } from '../state';
 
-declare abstract class ControlPanel {
+declare abstract class ControlPanelContract {
   abstract getRoutesConfigGate(prefix: string): RoutesConfig;
   abstract getRoutesConfigMain(prefix: string): RoutesConfig;
 }
 
-export { ControlPanel };
+export { ControlPanelContract };
