@@ -9,6 +9,7 @@ import {
 } from '../transactions';
 import { Artifacts } from '../artifacts';
 import { RequestAbortHandlerAbstract } from '../transactions';
+import { AuthRecord } from '../artifacts';
 
 declare class ActionContract {
   public store(
@@ -19,6 +20,12 @@ declare class ActionContract {
     payload: Payload
   ): Promise<ActionConclusion>;
 
+  public self(
+    authRecord: null | AuthRecord,
+    accessToken: null | string,
+    requestAbortHandler: RequestAbortHandlerAbstract
+  ): Promise<RetrieveResult>;
+
   public update(
     accessToken: null | string,
     artifacts: Artifacts,
@@ -27,6 +34,15 @@ declare class ActionContract {
     uuid: string,
     payload: Payload
   ): Promise<ActionConclusion>;
+
+  public retrieve(
+    accessToken: null | string,
+    role: null | string,
+    repository: string,
+    uuid: string,
+    variant: null | string,
+    requestAbortHandler: RequestAbortHandlerAbstract
+  ): Promise<RetrieveResult>;
 
   public flistQuery(
     accessToken: null | string,
@@ -55,15 +71,6 @@ declare class ActionContract {
     filters: null | SlistFilters,
     requestAbortHandler: RequestAbortHandlerAbstract
   ): Promise<QueryResult>;
-
-  public retrieve(
-    accessToken: null | string,
-    role: null | string,
-    repository: string,
-    uuid: string,
-    variant: null | string,
-    requestAbortHandler: RequestAbortHandlerAbstract
-  ): Promise<RetrieveResult>;
 
   public remove(
     accessToken: null | string,

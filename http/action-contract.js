@@ -23,9 +23,31 @@ class ActionContract {
         output().parseCommand(await (await fetch(apiUrl + '/store', { method: 'POST', body: formData })).json())
       );
     } catch (err) {
+      logger().estack(err);
       return notification().conclusion(
         new CommandResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {})
       );
+    }
+  }
+
+  async self(authRecord, accessToken, requestAbortHandler) {
+    try {
+      const apiUrl = store().getApiUrl();
+      if (!authRecord || !accessToken) {
+        return new RetrieveResult(404, null, 'Error', 'Auth record is missing', null, null, {});
+      }
+      const formData = new FormData();
+      formData.append('accessToken', accessToken);
+      const controller = new AbortController();
+      requestAbortHandler.register(() => controller.abort());
+      const result = await (
+        await fetch(apiUrl + '/self', { signal: controller.signal, method: 'POST', body: formData })
+      ).json();
+
+      return result;
+    } catch (err) {
+      logger().estack(err);
+      return new RetrieveResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {});
     }
   }
 
@@ -41,41 +63,11 @@ class ActionContract {
         output().parseCommand(await (await fetch(apiUrl + '/update', { method: 'POST', body: formData })).json())
       );
     } catch (err) {
+      logger().estack(err);
       return notification().conclusion(
         new CommandResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {})
       );
     }
-  }
-
-  async flistQuery(accessToken, role, repository, list, filters, variant, requestAbortHandler) {
-    try {
-      const apiUrl = store().getApiUrl();
-      const formData = new FormData();
-      formData.append('type', 'flist');
-      formData.append('accessToken', accessToken || '');
-      formData.append('role', role || '');
-      formData.append('repository', repository);
-      formData.append('list', list);
-      formData.append('filters', filters ? JSON.stringify(filters) : '');
-      formData.append('variant', variant || '');
-      const controller = new AbortController();
-      requestAbortHandler.register(() => controller.abort());
-      return await (
-        await fetch(apiUrl + '/query', { signal: controller.signal, method: 'POST', body: formData })
-      ).json();
-    } catch (err) {
-      return new QueryResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {});
-    }
-  }
-
-  async plistQuery(accessToken, role, repository, list, filters, requestAbortHandler) {
-    // nothing here yet
-    return new QueryResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {});
-  }
-
-  async slistQuery(accessToken, role, repository, list, filters, requestAbortHandler) {
-    // nothing here yet
-    return new QueryResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {});
   }
 
   async retrieve(accessToken, role, repository, uuid, variant, requestAbortHandler) {
@@ -98,6 +90,38 @@ class ActionContract {
       logger().estack(err);
       return new RetrieveResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {});
     }
+  }
+
+  async flistQuery(accessToken, role, repository, list, filters, variant, requestAbortHandler) {
+    try {
+      const apiUrl = store().getApiUrl();
+      const formData = new FormData();
+      formData.append('type', 'flist');
+      formData.append('accessToken', accessToken || '');
+      formData.append('role', role || '');
+      formData.append('repository', repository);
+      formData.append('list', list);
+      formData.append('filters', filters ? JSON.stringify(filters) : '');
+      formData.append('variant', variant || '');
+      const controller = new AbortController();
+      requestAbortHandler.register(() => controller.abort());
+      return await (
+        await fetch(apiUrl + '/query', { signal: controller.signal, method: 'POST', body: formData })
+      ).json();
+    } catch (err) {
+      logger().estack(err);
+      return new QueryResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {});
+    }
+  }
+
+  async plistQuery(accessToken, role, repository, list, filters, requestAbortHandler) {
+    // nothing here yet
+    return new QueryResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {});
+  }
+
+  async slistQuery(accessToken, role, repository, list, filters, requestAbortHandler) {
+    // nothing here yet
+    return new QueryResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {});
   }
 
   async remove(accessToken, role, repository, uuid) {
