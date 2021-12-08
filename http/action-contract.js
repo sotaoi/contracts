@@ -95,6 +95,7 @@ class ActionContract {
 
       return result;
     } catch (err) {
+      logger().estack(err);
       return new RetrieveResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {});
     }
   }
@@ -128,6 +129,7 @@ class ActionContract {
         output().parseAuth(await (await fetch(apiUrl + '/auth', { method: 'POST', body: formData })).json())
       );
     } catch (err) {
+      logger().estack(err);
       return notification().conclusion(
         new AuthResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, null, {})
       );
@@ -138,6 +140,17 @@ class ActionContract {
     const apiUrl = store().getApiUrl();
     await (await fetch(apiUrl + '/auth', { method: 'DELETE' })).json();
     await store().setAuthRecord(null, null);
+    // try {
+    //   const apiUrl = store().getApiUrl();
+    //   await (await fetch(apiUrl + '/auth', { method: 'DELETE' })).json();
+    //   await store().setAuthRecord(null, null);
+    // } catch (err) {
+    //   logger().estack(err);
+    //   return notification().conclusion(
+    //     // ??? TaskResult or what?
+    //     new TaskResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {})
+    //   );
+    // }
   }
 
   async task(accessToken, artifacts, role, repository, task, payload) {
@@ -152,6 +165,7 @@ class ActionContract {
         output().parseTask(await (await fetch(apiUrl + '/task', { method: 'POST', body: formData })).json())
       );
     } catch (err) {
+      logger().estack(err);
       return notification().conclusion(
         new TaskResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {})
       );
