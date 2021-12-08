@@ -1,9 +1,15 @@
-import { CommandResult, RetrieveResult, QueryResult, AuthResult, TaskResult } from '@sotaoi/contracts/transactions';
-import { Output } from '@sotaoi/client/output';
-import { store } from '@sotaoi/client/store';
-import { logger } from '@sotaoi/client/logger';
-import { notification } from '@sotaoi/client/notification';
-import { ErrorCode } from '@sotaoi/contracts/errors';
+const {
+  CommandResult,
+  RetrieveResult,
+  QueryResult,
+  AuthResult,
+  TaskResult,
+} = require('@sotaoi/contracts/transactions');
+const { output } = require('@sotaoi/client/output');
+const { store } = require('@sotaoi/client/store');
+const { logger } = require('@sotaoi/client/logger');
+const { notification } = require('@sotaoi/client/notification');
+const { ErrorCode } = require('@sotaoi/contracts/errors');
 
 class ActionContract {
   async store(accessToken, artifacts, role, repository, payload) {
@@ -14,7 +20,7 @@ class ActionContract {
       formData.append('role', role || '');
       formData.append('repository', repository || '');
       return notification().conclusion(
-        Output.parseCommand(await (await fetch(apiUrl + '/store', { method: 'POST', body: formData })).json())
+        output().parseCommand(await (await fetch(apiUrl + '/store', { method: 'POST', body: formData })).json())
       );
     } catch (err) {
       return notification().conclusion(
@@ -32,7 +38,7 @@ class ActionContract {
       formData.append('repository', repository || '');
       formData.append('uuid', uuid || '');
       return notification().conclusion(
-        Output.parseCommand(await (await fetch(apiUrl + '/update', { method: 'POST', body: formData })).json())
+        output().parseCommand(await (await fetch(apiUrl + '/update', { method: 'POST', body: formData })).json())
       );
     } catch (err) {
       return notification().conclusion(
@@ -102,7 +108,7 @@ class ActionContract {
       formData.append('repository', repository);
       formData.append('uuid', uuid);
       return notification().conclusion(
-        Output.parseCommand(await (await fetch(apiUrl + '/remove', { method: 'POST', body: formData })).json())
+        output().parseCommand(await (await fetch(apiUrl + '/remove', { method: 'POST', body: formData })).json())
       );
     } catch (err) {
       logger().estack(err);
@@ -119,7 +125,7 @@ class ActionContract {
       formData.append('repository', repository);
       formData.append('strategy', strategy);
       return notification().conclusion(
-        Output.parseAuth(await (await fetch(apiUrl + '/auth', { method: 'POST', body: formData })).json())
+        output().parseAuth(await (await fetch(apiUrl + '/auth', { method: 'POST', body: formData })).json())
       );
     } catch (err) {
       return notification().conclusion(
@@ -143,7 +149,7 @@ class ActionContract {
       formData.append('repository', repository || '');
       formData.append('task', task || '');
       return notification().conclusion(
-        Output.parseTask(await (await fetch(apiUrl + '/task', { method: 'POST', body: formData })).json())
+        output().parseTask(await (await fetch(apiUrl + '/task', { method: 'POST', body: formData })).json())
       );
     } catch (err) {
       return notification().conclusion(
@@ -157,4 +163,4 @@ class ActionContract {
   }
 }
 
-export { ActionContract };
+module.exports = { ActionContract };
