@@ -22,7 +22,7 @@ interface InputValidationResult {
 }
 
 declare abstract class InputValidatorContract<
-  FormValidation = null,
+  FormValidation = any,
   FormValidations = any,
   FieldValidation = any,
   CollectionInput = any,
@@ -49,15 +49,15 @@ declare abstract class InputValidatorContract<
 
   public static DEFALUT_ERROR_MSG: string;
 
-  protected config: InputValidatorConfig;
-  protected mdb: () => null | ((repository: string) => DatabaseConnection.QueryBuilder);
-  protected requester: null | RequesterFn<FieldValidation>;
-  protected formValidation: null | FormValidation;
-  protected errorTitle: null | string;
-  protected errorMsg: null | string;
-  protected errorMessages: { [key: string]: string[] };
-  protected apiErrorMessages: { [key: string]: string[] };
-  protected apiErrorXdata: { [key: string]: any };
+  // protected config: InputValidatorConfig;
+  // protected mdb: () => null | ((repository: string) => DatabaseConnection.QueryBuilder);
+  // protected requester: null | RequesterFn<FieldValidation>;
+  // protected formValidation: null | FormValidation;
+  // protected errorTitle: null | string;
+  // protected errorMsg: null | string;
+  // protected errorMessages: { [key: string]: string[] };
+  // protected apiErrorMessages: { [key: string]: string[] };
+  // protected apiErrorXdata: { [key: string]: any };
 
   constructor(
     config: InputValidatorConfig,

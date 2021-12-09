@@ -161,20 +161,13 @@ class ActionContract {
   }
 
   async deauth() {
-    const apiUrl = store().getApiUrl();
-    await (await fetch(apiUrl + '/auth', { method: 'DELETE' })).json();
-    await store().setAuthRecord(null, null);
-    // try {
-    //   const apiUrl = store().getApiUrl();
-    //   await (await fetch(apiUrl + '/auth', { method: 'DELETE' })).json();
-    //   await store().setAuthRecord(null, null);
-    // } catch (err) {
-    //   logger().estack(err);
-    //   return notification().conclusion(
-    //     // ??? TaskResult or what?
-    //     new TaskResult(400, ErrorCode.APP_GENERIC_ERROR, 'Error', 'Something went wrong', null, null, {})
-    //   );
-    // }
+    try {
+      const apiUrl = store().getApiUrl();
+      await (await fetch(apiUrl + '/auth', { method: 'DELETE' })).json();
+      await store().setAuthRecord(null, null);
+    } catch (err) {
+      logger().estack(err);
+    }
   }
 
   async task(accessToken, artifacts, role, repository, task, payload) {
