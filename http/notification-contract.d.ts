@@ -4,8 +4,8 @@ import {
   Awaited,
   SweetAlert2,
   ReactSweetAlert,
-} from '../definitions/notification-interface';
-import { CommandResult, QueryResult, ActionConclusion, AuthResult, TaskResult } from '../transactions';
+} from '@sotaoi/contracts/definitions/notification-interface';
+import { CommandResult, QueryResult, ActionConclusion, AuthResult, TaskResult } from '@sotaoi/contracts/transactions';
 
 type PushRoute = (to: string, goTop?: boolean) => void;
 

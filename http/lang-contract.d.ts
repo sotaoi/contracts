@@ -1,4 +1,4 @@
-import { StoreContract } from './store-contract';
+import { StoreContract } from '@sotaoi/contracts/http/store-contract';
 
 declare abstract class LangContract {
   abstract init(store: () => StoreContract): Promise<void>;

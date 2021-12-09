@@ -1,4 +1,4 @@
-import { RoutesConfig } from '../state';
+import { RoutesConfig } from '@sotaoi/contracts/state';
 
 declare abstract class ControlPanelContract {
   abstract getRoutesConfigGate(prefix: string): RoutesConfig;

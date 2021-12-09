@@ -1,8 +1,8 @@
-import { Lang, State, AppInfoInterface } from '../state';
-import { AuthRecord } from '../artifacts';
-import { StoreCreator, Store as ReduxStore } from '../definitions/redux';
-import { InputValidatorContract } from './input-validator-contract';
-import { LocalMemoryContract } from './local-memory-contract';
+import { Lang, State, AppInfoInterface } from '@sotaoi/contracts/state';
+import { AuthRecord } from '@sotaoi/contracts/artifacts';
+import { StoreCreator, Store as ReduxStore } from '@sotaoi/contracts/definitions/redux';
+import { InputValidatorContract } from '@sotaoi/contracts/http/input-validator-contract';
+import { LocalMemoryContract } from '@sotaoi/contracts/http/local-memory-contract';
 
 type StoreType = { getState: () => { [key: string]: any }; dispatch: any; subscribe: any } | ReduxStore;
 

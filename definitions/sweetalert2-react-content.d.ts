@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import { ReactElement } from 'react';
-import swal, { SweetAlertIcon, SweetAlertOptions, SweetAlertResult } from './sweetalert2';
+import swal, { SweetAlertIcon, SweetAlertOptions, SweetAlertResult } from '@sotaoi/contracts/definitions/sweetalert2';
 
 /**
  * Wraps SweetAlert2 implementation with a compatible implementation that supports React elements.

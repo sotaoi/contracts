@@ -1,5 +1,5 @@
-import type { ErrorResult } from '../transactions';
-import type { DatabaseConnection } from '../definitions/mdriver';
+import type { ErrorResult } from '@sotaoi/contracts/transactions';
+import type { DatabaseConnection } from '@sotaoi/contracts/definitions/mdriver';
 
 type RequesterFn<FieldValidation = any> = (
   key: string,

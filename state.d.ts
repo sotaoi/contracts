@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthRecord } from './artifacts';
+import { AuthRecord } from '@sotaoi/contracts/artifacts';
 
 interface AppInfoInterface {
   [key: string]: string;

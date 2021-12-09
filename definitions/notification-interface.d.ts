@@ -1242,4 +1242,4 @@ interface JQuery {}
 //
 
 export type { NotificationInterface };
-export type { SweetAlert2, ReactSweetAlert } from './sweetalert2-react-content';
+export type { SweetAlert2, ReactSweetAlert } from '@sotaoi/contracts/definitions/sweetalert2-react-content';

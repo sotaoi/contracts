@@ -1,4 +1,4 @@
-const { ErrorCode } = require('./errors');
+const { ErrorCode } = require('@sotaoi/contracts/errors');
 
 class MsgResult {
   constructor(code, errorCode, title, msg, xdata) {

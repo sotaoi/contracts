@@ -6,10 +6,10 @@ import {
   PlistFilters,
   SlistFilters,
   ActionConclusion,
-} from '../transactions';
-import { Artifacts } from '../artifacts';
-import { RequestAbortHandlerAbstract } from '../transactions';
-import { AuthRecord } from '../artifacts';
+} from '@sotaoi/contracts/transactions';
+import { Artifacts } from '@sotaoi/contracts/artifacts';
+import { RequestAbortHandlerAbstract } from '@sotaoi/contracts/transactions';
+import { AuthRecord } from '@sotaoi/contracts/artifacts';
 
 declare class ActionContract {
   public store(

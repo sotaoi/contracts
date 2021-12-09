@@ -1,5 +1,5 @@
-import { Artifacts, AuthRecord, RecordEntry, Artifact, RecordRef } from './artifacts';
-import { NotificationContract } from './http/notification-contract';
+import { Artifacts, AuthRecord, RecordEntry, Artifact, RecordRef } from '@sotaoi/contracts/artifacts';
+import { NotificationContract } from '@sotaoi/contracts/http/notification-contract';
 
 interface ScopedRequests {
   [key: string]: (data: { [key: string]: any }) => Promise<any>;

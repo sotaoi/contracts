@@ -1,4 +1,4 @@
-import type { CommandResult, AuthResult, TaskResult } from '../transactions';
+import type { CommandResult, AuthResult, TaskResult } from '@sotaoi/contracts/transactions';
 
 type TransformerFn = (
   item: any,
