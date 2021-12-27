@@ -7,7 +7,7 @@
     "node": "14.x"
   },
   "peerDependencies": {
-    "@sotaoi/client": "^1.1.2",
+    "@sotaoi/client": "^1.1.6",
     "@sotaoi/client-forms": "^1.1.2"
   },
   "devDependencies": {
