@@ -1,5 +1,5 @@
-const { BaseField } = require('@sotaoi/client/forms/fields/base-field');
-const { SingleCollectionField, CollectionField } = require('@sotaoi/client/forms/fields/collection-field');
+const { BaseField } = require('@sotaoi/client-forms/fields/base-field');
+const { SingleCollectionField, CollectionField } = require('@sotaoi/client-forms/fields/collection-field');
 const { Helper } = require('@sotaoi/client/helper');
 
 class OutputContract {
