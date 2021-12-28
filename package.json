@@ -1,7 +1,7 @@
 {
   "name": "@sotaoi/contracts",
   "private": false,
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "",
   "engines": {
     "node": "14.x"
