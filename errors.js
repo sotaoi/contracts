@@ -5,12 +5,22 @@ class ErrorException extends Error {
   }
 }
 
+//
+
+class ResultIsCorruptError extends ErrorException {}
+class NotFoundViewError extends ErrorException {}
+class ComponentFailError extends ErrorException {}
+class NotFoundLayoutError extends ErrorException {}
+class InvalidGateRepositoryError extends ErrorException {}
+
+//
+
 const Errors = {
-  ResultIsCorrupt: class ResultIsCorruptError extends ErrorException {},
-  NotFoundView: class NotFoundViewError extends ErrorException {},
-  ComponentFail: class ComponentFailError extends ErrorException {},
-  NotFoundLayout: class NotFoundLayoutError extends ErrorException {},
-  InvalidGateRepository: class InvalidGateRepositoryError extends ErrorException {},
+  ResultIsCorrupt: ResultIsCorruptError,
+  NotFoundView: NotFoundViewError,
+  ComponentFail: ComponentFailError,
+  NotFoundLayout: NotFoundLayoutError,
+  InvalidGateRepository: InvalidGateRepositoryError,
 };
 
 class ErrorCode {
@@ -18,4 +28,13 @@ class ErrorCode {
 }
 ErrorCode.APP_GENERIC_ERROR = 'app.generic.error';
 
-module.exports = { ErrorException, Errors, ErrorCode };
+module.exports = {
+  ErrorException,
+  Errors,
+  ErrorCode,
+  ResultIsCorruptError,
+  NotFoundViewError,
+  ComponentFailError,
+  NotFoundLayoutError,
+  InvalidGateRepositoryError,
+};
