@@ -16,10 +16,10 @@ declare class InvalidGateRepositoryError extends ErrorException {}
 
 declare const Errors: {
   ResultIsCorrupt: typeof ResultIsCorruptError;
-  NotFoundViewError: typeof NotFoundViewError;
-  ComponentFailError: typeof ComponentFailError;
-  NotFoundLayoutError: typeof NotFoundLayoutError;
-  InvalidGateRepositoryError: typeof InvalidGateRepositoryError;
+  NotFoundView: typeof NotFoundViewError;
+  ComponentFail: typeof ComponentFailError;
+  NotFoundLayout: typeof NotFoundLayoutError;
+  InvalidGateRepository: typeof InvalidGateRepositoryError;
   [key: string]: typeof ErrorException;
 };
 
